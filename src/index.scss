@@ -2,16 +2,56 @@
 @tailwind components;
 @tailwind utilities;
 
-$bg-color: #eef2fe;
-$text-color: #eef2ff;
+$bg-light: #eef2fe;
+$text-light: #eef2ff;
+$indigo-main: #4f46e5;
+$indigo-dark: #3730a3;
 
 .app {
-    background-color: $bg-color;
+    background-color: $bg-light;
     @apply min-h-screen
 }
 
 header a {
-    color: $text-color;
+    color: $text-light;
     font-weight: 600;
     @apply text-xl
+}
+
+main {
+    @apply mx-10 md:px-28 lg:px-60
+}
+
+.nav-item {  
+    color: $text-light;
+    background-color: $indigo-main;
+    
+    h3 {
+        @apply text-3xl font-bold
+    }
+    p {
+        @apply text-lg
+    }
+    @apply w-96 h-64 rounded-xl flex items-center justify-center flex-col gap-3 transition-colors
+}
+.nav-item:hover{
+    border-color: $indigo-main;
+    color: $indigo-main;
+    p {
+        font-weight: 500;
+    }
+    @apply border-4 bg-transparent
+}
+
+.home-desc {
+    h2 {
+        color: $indigo-main;
+        font-weight: 700;
+        @apply text-6xl mb-5 leading-[1.1]
+    }
+    p {
+        color: $indigo-dark;
+        font-weight: 500;
+        @apply text-2xl
+    }
 }
