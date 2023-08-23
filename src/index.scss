@@ -7,9 +7,8 @@ $text-light: #eef2ff;
 $indigo-main: #4f46e5;
 $indigo-dark: #3730a3;
 
-.app {
+body {
     background-color: $bg-light;
-    @apply min-h-screen
 }
 
 header a {
@@ -19,7 +18,7 @@ header a {
 }
 
 main {
-    @apply mx-10 md:px-28 lg:px-40 xl:px-60 
+    @apply mx-10 md:px-28 lg:px-40 xl:px-60 min-h-full
 }
 
 .nav-item {  

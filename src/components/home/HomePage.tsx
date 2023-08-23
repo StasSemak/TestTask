@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 const HomePage = () => {
     return(
         <div className="flex flex-col gap-16 sm:gap-24 mt-10">
@@ -7,18 +9,18 @@ const HomePage = () => {
                 <p>Maybe, you'll be this person for someone?</p>
             </div>
             <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 xl:gap-24 items-center justify-center">
-                <a href="/create">
+                <Link to="/create">
                     <div className="nav-item">
                         <h3>Create</h3>
                         <p>Create new order or delivery request</p>
                     </div>
-                </a>
-                <a href="/requests">
+                </Link>
+                <Link to="/requests">
                     <div className="nav-item">
                         <h3>Requests</h3>
                         <p>Explore and manage your requests</p>
                     </div>
-                </a>
+                </Link>
             </div>
         </div>
     )

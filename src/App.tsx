@@ -1,14 +1,20 @@
+import { Route, Routes } from "react-router-dom"
 import HomePage from "./components/home/HomePage"
-import Header from "./components/layout/Header"
+import Layout from "./components/layout/Layout"
+import Create from "./components/create/Create"
+import Requests from "./components/requests/Requests"
 
 function App() {
   return (
-    <div className="app">
-      <Header/>
-      <main>
-        <HomePage/>
-      </main>
-    </div>
+    <>
+      <Routes>
+        <Route path="/" element={<Layout/>}>
+          <Route index element={<HomePage/>}/>
+          <Route path="create" element={<Create/>}/>
+          <Route path="requests" element={<Requests/>}/>
+        </Route>
+      </Routes>
+    </>
   )
 }
 
