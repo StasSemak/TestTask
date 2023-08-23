@@ -2,8 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-$color: green;
+$bg-color: #eef2fe;
+$text-color: #eef2ff;
 
-.main-div {
-    background-color: $color;
+.app {
+    background-color: $bg-color;
+    @apply min-h-screen
+}
+
+header a {
+    color: $text-color;
+    font-weight: 600;
+    @apply text-xl
 }
