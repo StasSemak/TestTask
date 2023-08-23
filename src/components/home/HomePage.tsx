@@ -6,7 +6,7 @@ const HomePage = () => {
                 <p>Make your request and other user will deliver your goods as fast as possible</p>
                 <p>Maybe, you'll be this person for someone?</p>
             </div>
-            <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center justify-center">
+            <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 xl:gap-24 items-center justify-center">
                 <a href="/create">
                     <div className="nav-item">
                         <h3>Create</h3>
