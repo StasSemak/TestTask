@@ -6,6 +6,7 @@ import Requests from "./components/requests/Requests"
 import CreateOrder from "./components/create/CreateOrder"
 import CreateDeliver from "./components/create/CreateDeliver"
 import CreateLayout from "./components/create/CreateLayout"
+import { Toaster } from "react-hot-toast"
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="requests" element={<Requests/>}/>
         </Route>
       </Routes>
+      <Toaster position="top-right" containerStyle={{top: 90}}/>
     </>
   )
 }
