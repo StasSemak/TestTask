@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 
 const HomePage = () => {
     return(
-        <div className="flex flex-col gap-16 sm:gap-24 mt-10">
+        <div className="flex flex-col gap-16 sm:gap-24">
             <div className="home-desc">
                 <h2>Best parcel transportation community</h2>
                 <p>Make your request and other user will deliver your goods as fast as possible</p>

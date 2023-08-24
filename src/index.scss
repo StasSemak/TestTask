@@ -18,7 +18,7 @@ header a {
 }
 
 main {
-    @apply mx-10 md:px-28 lg:px-40 xl:px-60 min-h-full
+    @apply mx-10 md:px-28 lg:px-40 xl:px-60 min-h-full pt-10
 }
 
 .nav-item {  
@@ -52,5 +52,34 @@ main {
         color: $indigo-dark;
         font-weight: 500;
         @apply text-2xl
+    }
+}
+
+.create {
+    color: $indigo-main;
+    h2 {
+        font-weight: 700;
+        @apply text-4xl
+    }
+}
+.nav-item-create {
+    border-color: $indigo-main;
+    h3 {
+        color: $indigo-main;
+        font-weight: 500;
+        @apply text-2xl 
+    }
+    .icon {
+        stroke: $indigo-main;
+    }
+    @apply border-4 h-20 w-96 rounded-lg flex items-center justify-center gap-2 transition-colors
+}
+.nav-item-create:hover {
+    background-color: $indigo-main;
+    h3 {
+        color: $text-light
+    }
+    .icon {
+        stroke: $text-light;
     }
 }
