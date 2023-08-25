@@ -2,7 +2,7 @@ import { ChangeEvent, FormEvent, useState } from "react";
 import Button from "../ui/Button";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import { createRequest } from "../../lib/order";
+import { createRequest } from "../../lib/requests";
 
 
 const CreateDeliver = () => {
