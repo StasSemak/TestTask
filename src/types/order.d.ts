@@ -1,4 +1,5 @@
 type BaseRequest = {
+    id: string
     from: string
     to: string
     dateCreated: Date

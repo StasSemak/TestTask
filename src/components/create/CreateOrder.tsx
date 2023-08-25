@@ -6,6 +6,7 @@ import { createRequest } from "../../lib/requests"
 
 const CreateOrder = () => {
     const [request, setRequest] = useState<ParcelRequest>({
+        id: '',
         requestType: 'order',
         from: '', 
         to: '', 
@@ -66,7 +67,7 @@ const CreateOrder = () => {
                     <input 
                         placeholder="What's inside the package" 
                         className="input"
-                        name="type"
+                        name="parcelType"
                         onChange={changeHandler}
                     />
                 </div>

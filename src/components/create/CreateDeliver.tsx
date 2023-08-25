@@ -7,6 +7,7 @@ import { createRequest } from "../../lib/requests";
 
 const CreateDeliver = () => {
     const [request, setRequest] = useState<ParcelRequest>({
+        id: '',
         requestType: 'deliver',
         from: '', 
         to: '', 

@@ -1,3 +1,5 @@
+import { nanoid } from "nanoid"
+
 export const createRequest = (request: ParcelRequest) => {
     if(request.from.length === 0) throw new Error("Location can't be empty!")
     if(request.to.length === 0) throw new Error("Destination can't be empty!")
@@ -6,6 +8,7 @@ export const createRequest = (request: ParcelRequest) => {
                 throw new Error("Date can't be previous!")
     }
 
+    request.id = nanoid()
     request.dateCreated = new Date(Date.now())
 
     const existingRequestsLS = localStorage.getItem("requests")
@@ -13,4 +16,9 @@ export const createRequest = (request: ParcelRequest) => {
     if(existingRequestsLS) existingRequests = JSON.parse(existingRequestsLS) as ParcelRequest[]
 
     localStorage.setItem("requests", JSON.stringify([...existingRequests, request]))
+}
+
+export const getRequests = () => {
+    const requests = localStorage.getItem("requests");
+    if(requests) return JSON.parse(requests) as ParcelRequest[]
 }
