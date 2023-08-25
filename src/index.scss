@@ -107,3 +107,30 @@ main {
 .btn:hover {
     background-color: $indigo-dark;
 }
+
+.requests {
+    h2 {
+        color: $indigo-main;
+        font-weight: 600;
+        @apply text-4xl mb-6
+    }
+}
+.requests-container {
+    align-items: flex-start;
+    @apply flex gap-6 flex-wrap
+}
+.request-card {
+    border-color: $indigo-main;
+    color: $indigo-dark;
+    .btn {
+        @apply p-2.5
+    }
+    .type {
+        color: $indigo-main
+    }
+    .icon {
+        stroke: $indigo-dark;
+        @apply h-6 w-6 min-h-[1.5rem] min-w-[1.5rem]
+    }
+    @apply p-4 border-2 rounded-lg w-60 flex flex-col gap-3
+}
