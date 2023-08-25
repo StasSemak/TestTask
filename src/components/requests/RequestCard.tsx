@@ -20,11 +20,11 @@ const RequestCard = (request: ParcelRequest) => {
                 <>
                     <div className="flex gap-1.5 items-center">
                         <PackageOpen className="icon"/>
-                        <p className="text-lg font-medium">{request.parcelType}</p>
+                        <p className="text-lg font-medium">{request.parcelType ? request.parcelType : "Not specified"}</p>
                     </div>
                     <div className="flex gap-1.5 items-center">
                         <ClipboardList className="icon"/>
-                        <p className="font-medium">{request.description}</p>
+                        <p className="font-medium">{request.description ? request.description : "Not specified"}</p>
                     </div>
                 </>
             }
