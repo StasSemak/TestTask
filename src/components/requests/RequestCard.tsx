@@ -1,5 +1,6 @@
 import { Calendar, ClipboardList, PackageOpen, Pencil, Trash2 } from "lucide-react"
 import Button from "../ui/Button"
+import DeleteDialog from "./DeleteDialog"
 
 const RequestCard = (request: ParcelRequest) => {
     const isOrder = request.requestType === 'order'
@@ -32,9 +33,10 @@ const RequestCard = (request: ParcelRequest) => {
                 <Button>
                     <Pencil className="h-4 w-4"/>
                 </Button>
-                <Button>
+                {/* <Button>
                     <Trash2 className="h-4 w-4"/>
-                </Button>
+                </Button> */}
+                <DeleteDialog requestId={request.id}/>
             </div>
         </div>
     )

@@ -21,3 +21,12 @@ export const getRequests = () => {
     const requests = localStorage.getItem("requests");
     if(requests) return JSON.parse(requests) as ParcelRequest[]
 }
+
+export const deleteRequest = (requestId: string) => {
+    const requestsLS = localStorage.getItem("requests")
+    if(!requestsLS) return;
+    const requests = JSON.parse(requestsLS) as ParcelRequest[]
+
+    const newRequests = requests.filter(x => x.id !== requestId)
+    localStorage.setItem("requests", JSON.stringify(newRequests))
+}

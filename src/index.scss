@@ -139,3 +139,11 @@ main {
     }
     @apply p-4 border-2 rounded-lg w-60 flex flex-col gap-3
 }
+
+.btn-cancel {
+    color: $indigo-dark;
+    background-color: transparent;
+}
+.btn-cancel:hover {
+    background-color: $text-light;
+}
