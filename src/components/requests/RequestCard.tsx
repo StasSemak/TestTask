@@ -28,7 +28,7 @@ const RequestCard = (request: ParcelRequest) => {
                     </div>
                 </>
             }
-            <div className="flex justify-end gap-3 mt-2">
+            <div className="flex justify-end gap-0.5 mt-2">
                 <Button>
                     <Pencil className="h-4 w-4"/>
                 </Button>
