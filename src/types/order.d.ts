@@ -1,13 +1,18 @@
-interface BaseRequest {
+type BaseRequest = {
     from: string
     to: string
     dateCreated: Date
-    dateDispatch?: Date
+    dateDispatch?: Date 
 }
 
-interface OrderRequest extends BaseRequest {
-    type?: string
-    description?: string
+type OrderRequest = BaseRequest & {
+    requestType: 'order'
+    parcelType?: string
+    description?: string 
 }
 
-interface DeliverRequest extends BaseRequest {}
+type DeliverRequest = BaseRequest & {
+    requestType: 'deliver'
+}
+
+type ParcelRequest = OrderRequest | DeliverRequest

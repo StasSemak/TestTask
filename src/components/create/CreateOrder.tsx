@@ -2,12 +2,14 @@ import { ChangeEvent, FormEvent, useState } from "react"
 import Button from "../ui/Button"
 import { toast } from "react-hot-toast"
 import { useNavigate } from "react-router-dom"
+import { createRequest } from "../../lib/order"
 
 const CreateOrder = () => {
-    const [request, setRequest] = useState<OrderRequest>({
+    const [request, setRequest] = useState<ParcelRequest>({
+        requestType: 'order',
         from: '', 
         to: '', 
-        type: '',
+        parcelType: '',
         dateCreated: new Date(0),
         dateDispatch: new Date(0),
         description: ''
@@ -20,29 +22,12 @@ const CreateOrder = () => {
         setRequest({...request, [e.target.name]: e.target.value})
     }
 
-    const createOrder = (order: OrderRequest) => {
-        if(order.from.length === 0) throw new Error("Location can't be empty!")
-        if(order.to.length === 0) throw new Error("Destination can't be empty!")
-        if(order.dateDispatch) {
-            if(new Date(order.dateDispatch).getTime() < Date.now()) 
-                throw new Error("Date can't be previous!")
-        }
-
-        order.dateCreated = new Date(Date.now())
-
-        const existingOrdersLS = localStorage.getItem("orders")
-        let existingOrders: OrderRequest[] = [];
-        if(existingOrdersLS) existingOrders = JSON.parse(existingOrdersLS) as OrderRequest[]
-
-        localStorage.setItem("orders", JSON.stringify([...existingOrders, order]))
-    }
-
     const submithandler = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setIsLoading(true)
 
         try {
-            createOrder(request);
+            createRequest(request);
             toast.success("Order successfully added!")
             navigate(0)
         }
