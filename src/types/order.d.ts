@@ -3,7 +3,7 @@ type BaseRequest = {
     from: string
     to: string
     dateCreated: Date
-    dateDispatch?: Date 
+    dateDispatch: Date 
 }
 
 type OrderRequest = BaseRequest & {
