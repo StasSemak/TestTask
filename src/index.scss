@@ -128,7 +128,7 @@ main {
         @apply p-2.5
     }
     .btn:hover {
-        background-color: #c7d2fe;
+        background-color: $text-light;
     }
     .type {
         color: $indigo-main
