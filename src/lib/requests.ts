@@ -30,3 +30,20 @@ export const deleteRequest = (requestId: string) => {
     const newRequests = requests.filter(x => x.id !== requestId)
     localStorage.setItem("requests", JSON.stringify(newRequests))
 }
+
+export const updateRequest = (request: ParcelRequest) => {
+    if(request.from.length === 0) throw new Error("Location can't be empty!")
+    if(request.to.length === 0) throw new Error("Destination can't be empty!")
+    if(new Date(request.dateDispatch).getTime() !== new Date(0).getTime())
+        if(new Date(request.dateDispatch).getTime() < Date.now()) 
+            throw new Error("Date can't be previous!")
+
+    const requestsLS = localStorage.getItem("requests")
+    if(!requestsLS) return;
+    const requests = JSON.parse(requestsLS) as ParcelRequest[]
+
+    const newRequests = requests.filter(x => x.id !== request.id)
+    newRequests.push(request)
+
+    localStorage.setItem("requests", JSON.stringify(newRequests))
+}

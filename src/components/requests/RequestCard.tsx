@@ -1,6 +1,6 @@
-import { Calendar, ClipboardList, PackageOpen, Pencil, Trash2 } from "lucide-react"
-import Button from "../ui/Button"
+import { Calendar, ClipboardList, PackageOpen } from "lucide-react"
 import DeleteDialog from "./DeleteDialog"
+import EditDialog from "./EditDialog"
 
 const RequestCard = (request: ParcelRequest) => {
     const isOrder = request.requestType === 'order'
@@ -30,12 +30,7 @@ const RequestCard = (request: ParcelRequest) => {
                 </>
             }
             <div className="flex justify-end gap-0.5 mt-2">
-                <Button>
-                    <Pencil className="h-4 w-4"/>
-                </Button>
-                {/* <Button>
-                    <Trash2 className="h-4 w-4"/>
-                </Button> */}
+                <EditDialog request={request}/>
                 <DeleteDialog requestId={request.id}/>
             </div>
         </div>
