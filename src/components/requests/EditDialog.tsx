@@ -20,7 +20,7 @@ const EditDialog = ({request}: {request:ParcelRequest}) => {
     const updateHandler = () => {
         try {
             updateRequest(newRequest)
-            toast.success("Order successfully added!")
+            toast.success("Request saved!")
             navigate(0)
         }
         catch(error) {
