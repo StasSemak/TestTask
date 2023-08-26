@@ -20,7 +20,7 @@ const DeleteDialog = ({requestId}: {requestId:string}) => {
                 </Button>
             </AlertDialog.Trigger>
 
-            <AlertDialog.Content style={{maxWidth: 450}}>
+            <AlertDialog.Content className="delete-alert">
                 <AlertDialog.Title>
                     Delete request
                 </AlertDialog.Title>
