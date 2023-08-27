@@ -17,9 +17,29 @@ export const createRequest = (request: ParcelRequest) => {
     localStorage.setItem("requests", JSON.stringify([...existingRequests, request]))
 }
 
-export const getRequests = () => {
+export const getRequests = (orderBy: SortRequestsBy) => {
     const requests = localStorage.getItem("requests");
-    if(requests) return JSON.parse(requests) as ParcelRequest[]
+    if(requests) {
+        const res = JSON.parse(requests) as ParcelRequest[]
+        return orderBy === 'creation' ? getSortedByCreation(res) : getSortedByDispatch(res)
+    }
+}
+
+export const getSortedByCreation = (requests: ParcelRequest[]) => {
+    if(!requests) return;
+
+    return requests.sort((a, b) => {
+        return new Date(a.dateCreated).getTime() - new Date(b.dateCreated).getDate() 
+    })
+}
+
+export const getSortedByDispatch = (requests: ParcelRequest[]) => {
+    if(!requests) return;
+
+    return requests.sort((a, b) => {
+        return Date.parse(new Date(a.dateDispatch).toDateString()) 
+            - Date.parse(new Date(b.dateDispatch).toDateString())
+    })
 }
 
 export const deleteRequest = (requestId: string) => {

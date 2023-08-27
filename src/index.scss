@@ -115,8 +115,9 @@ main {
     h2 {
         color: $indigo-main;
         font-weight: 600;
-        @apply text-4xl mb-6
+        @apply text-4xl
     }
+    @apply flex flex-col gap-8
 }
 .requests-container {
     align-items: flex-start;

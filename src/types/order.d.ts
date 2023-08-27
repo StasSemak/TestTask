@@ -17,3 +17,5 @@ type DeliverRequest = BaseRequest & {
 }
 
 type ParcelRequest = OrderRequest | DeliverRequest
+
+type SortRequestsBy = "creation" | "dispatch"
