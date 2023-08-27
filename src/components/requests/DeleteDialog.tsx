@@ -2,14 +2,15 @@ import { AlertDialog, Flex } from "@radix-ui/themes"
 import Button, { buttonVariants } from "../ui/Button"
 import { Trash2 } from "lucide-react"
 import { deleteRequest } from "../../lib/requests"
-import { useNavigate } from "react-router-dom"
+import { useAppDispatch } from "../../store/hooks"
+import { deleteItem } from "../../store/requestsSlice"
 
 const DeleteDialog = ({requestId}: {requestId:string}) => {
-    const navigate = useNavigate()
+    const dispatch = useAppDispatch()
 
     const deleteHandler = () => {
         deleteRequest(requestId)
-        navigate(0)
+        dispatch(deleteItem(requestId))
     }
 
     return(

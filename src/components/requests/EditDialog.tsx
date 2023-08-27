@@ -4,7 +4,8 @@ import { Pencil } from "lucide-react"
 import { ChangeEvent, useState } from "react"
 import { updateRequest } from "../../lib/requests"
 import toast from "react-hot-toast"
-import { useNavigate } from "react-router-dom"
+import { useAppDispatch } from "../../store/hooks"
+import { updateItem } from "../../store/requestsSlice"
 
 const EditDialog = ({request}: {request:ParcelRequest}) => {
     const [newRequest, setNewRequest] = useState<ParcelRequest>(request);
@@ -15,13 +16,13 @@ const EditDialog = ({request}: {request:ParcelRequest}) => {
 
     const isDate = new Date(request.dateDispatch).getTime() !== new Date(0).getTime()
 
-    const navigate = useNavigate()
+    const dispatch = useAppDispatch()
 
     const updateHandler = () => {
         try {
             updateRequest(newRequest)
+            dispatch(updateItem(newRequest))
             toast.success("Request saved!")
-            navigate(0)
         }
         catch(error) {
             if(error instanceof Error) toast.error(error.message)

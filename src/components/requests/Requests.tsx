@@ -4,14 +4,27 @@ import RequestCard from "./RequestCard"
 import { DropdownMenu } from "@radix-ui/themes"
 import Button, { buttonVariants } from "../ui/Button"
 import { Link } from "react-router-dom"
+import { useAppDispatch, useAppSelector } from "../../store/hooks"
+import { RootState } from "../../store/store"
+import { setItems } from "../../store/requestsSlice"
 
 const Requests = () => {
     const [requests, setRequests] = useState<ParcelRequest[]>([])
     const [sortBy, setSortBy] = useState<SortRequestsBy>("creation")
 
+    const dispatch = useAppDispatch()
+    const itemsInRedux = useAppSelector((state: RootState) => state.requestsReducer)
+
+    useEffect(() => {
+        setRequests(itemsInRedux)
+    }, [itemsInRedux])
+
     useEffect(() => {
         const reqs = getRequests(sortBy)
-        if(reqs) setRequests(reqs)
+        if(reqs) {
+            setRequests(reqs)
+            dispatch(setItems(reqs))
+        }
     }, [sortBy])
 
     return(
