@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { getRequests } from "../../lib/requests"
 import RequestCard from "./RequestCard"
 import { DropdownMenu } from "@radix-ui/themes"
-import Button from "../ui/Button"
+import Button, { buttonVariants } from "../ui/Button"
 import { Link } from "react-router-dom"
 
 const Requests = () => {
@@ -44,7 +44,7 @@ const Requests = () => {
             {requests.length === 0 ? 
                 <div className="h-[40vh] flex flex-col justify-center items-center gap-6">
                     <h3>You don't have requests</h3>
-                    <Link to="/create">
+                    <Link to="/create" className={buttonVariants()}>
                         Create
                     </Link>
                 </div>    

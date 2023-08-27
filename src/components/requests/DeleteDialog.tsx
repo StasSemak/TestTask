@@ -1,5 +1,5 @@
 import { AlertDialog, Flex } from "@radix-ui/themes"
-import Button from "../ui/Button"
+import Button, { buttonVariants } from "../ui/Button"
 import { Trash2 } from "lucide-react"
 import { deleteRequest } from "../../lib/requests"
 import { useNavigate } from "react-router-dom"
@@ -15,7 +15,7 @@ const DeleteDialog = ({requestId}: {requestId:string}) => {
     return(
         <AlertDialog.Root>
             <AlertDialog.Trigger>
-                <Button>
+                <Button className={buttonVariants({variant: 'ghost', size: 'sm'})}>
                     <Trash2 className="h-4 w-4"/>
                 </Button>
             </AlertDialog.Trigger>
@@ -30,7 +30,7 @@ const DeleteDialog = ({requestId}: {requestId:string}) => {
 
                 <Flex gap="3" mt="5" justify="end">
                     <AlertDialog.Cancel>
-                        <Button className="btn-cancel">
+                        <Button className={buttonVariants({variant: 'ghost'})}>
                             Cancel
                         </Button>
                     </AlertDialog.Cancel>

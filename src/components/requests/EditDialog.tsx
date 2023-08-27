@@ -1,5 +1,5 @@
 import { Dialog, Flex } from "@radix-ui/themes"
-import Button from "../ui/Button"
+import Button, { buttonVariants } from "../ui/Button"
 import { Pencil } from "lucide-react"
 import { ChangeEvent, useState } from "react"
 import { updateRequest } from "../../lib/requests"
@@ -31,7 +31,7 @@ const EditDialog = ({request}: {request:ParcelRequest}) => {
     return(
         <Dialog.Root>
             <Dialog.Trigger>
-                <Button>
+                <Button className={buttonVariants({variant: 'ghost', size: 'sm'})}>
                     <Pencil className="h-4 w-4"/>
                 </Button>
             </Dialog.Trigger>
@@ -100,7 +100,7 @@ const EditDialog = ({request}: {request:ParcelRequest}) => {
 
                 <Flex gap="3" mt="5" justify="end">
                     <Dialog.Close>
-                        <Button className="btn-cancel">
+                        <Button className={buttonVariants({variant: 'ghost'})}>
                             Cancel
                         </Button>
                     </Dialog.Close>

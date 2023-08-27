@@ -105,11 +105,18 @@ main {
 .btn {
     background-color: $indigo-main;
     color: $text-light;
-    @apply py-3 px-8 inline-flex w-fit items-center justify-center rounded-lg transition-all disabled:opacity-60 disabled:pointer-events-none
 }
 .btn:hover {
     background-color: $indigo-dark;
 }
+.btn-ghost {
+    color: $indigo-dark;
+    background-color: transparent;
+}
+.btn-ghost:hover {
+    background-color: $text-light;
+}
+
 
 .requests {
     h2 {
@@ -131,14 +138,6 @@ main {
 .request-card {
     border-color: $indigo-main;
     color: $indigo-dark;
-    .btn {
-        color: $indigo-dark;
-        background-color: transparent;
-        @apply p-2.5
-    }
-    .btn:hover {
-        background-color: $text-light;
-    }
     .type {
         color: $indigo-main
     }
@@ -156,12 +155,4 @@ main {
 }
 .edit-dialog {
     color: $indigo-dark;
-}
-
-.btn-cancel {
-    color: $indigo-dark;
-    background-color: transparent;
-}
-.btn-cancel:hover {
-    background-color: $text-light;
 }

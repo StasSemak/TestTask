@@ -1,16 +1,38 @@
 import React from "react"
 import { cn } from "../../lib/utils"
 import { Loader2 } from "lucide-react"
+import { VariantProps, cva } from "class-variance-authority"
 
-interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+const buttonVariants = cva(
+    'inline-flex w-fit items-center justify-center rounded-lg transition-all disabled:opacity-60 disabled:pointer-events-none',
+    {
+        variants: {
+            variant: {
+                default: 'btn',
+                ghost: 'btn-ghost'
+            },
+            size: {
+                default: 'py-3 px-8',
+                sm: 'p-2.5'
+            }
+        },
+        defaultVariants: {
+            variant: 'default',
+            size: 'default'
+        },
+    }
+)
+
+interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {
     isLoading?: boolean
 }
 
 const Button = React.forwardRef<HTMLButtonElement, Props>(
-    ({className, children, isLoading, ...props}, ref) => {
+    ({className, children, variant, size, isLoading, ...props}, ref) => {
         return(
             <button
-                className={cn("btn", className)}
+                className={cn(buttonVariants({variant, size, className}))}
                 ref={ref}
                 disabled={isLoading}
                 {...props}
@@ -23,4 +45,5 @@ const Button = React.forwardRef<HTMLButtonElement, Props>(
 )
 Button.displayName = 'Button'
 
+export { buttonVariants }
 export default Button
