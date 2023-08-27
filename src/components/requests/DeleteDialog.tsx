@@ -4,6 +4,7 @@ import { Trash2 } from "lucide-react"
 import { deleteRequest } from "../../lib/requests"
 import { useAppDispatch } from "../../store/hooks"
 import { deleteItem } from "../../store/requestsSlice"
+import { toast } from "react-hot-toast"
 
 const DeleteDialog = ({requestId}: {requestId:string}) => {
     const dispatch = useAppDispatch()
@@ -11,6 +12,7 @@ const DeleteDialog = ({requestId}: {requestId:string}) => {
     const deleteHandler = () => {
         deleteRequest(requestId)
         dispatch(deleteItem(requestId))
+        toast.success("Request deleted!")
     }
 
     return(
