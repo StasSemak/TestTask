@@ -9,6 +9,9 @@ const requestsSlice = createSlice({
         setItems: (state ,action: PayloadAction<ParcelRequest[]>) => {
             return action.payload
         },
+        addItem: (state, action: PayloadAction<ParcelRequest>) => {
+            return [...state, action.payload]
+        },
         updateItem: (state, action: PayloadAction<ParcelRequest>) => {
             const request = action.payload
             const itemIndex = state.findIndex((x) => x.id === request.id)
@@ -21,5 +24,5 @@ const requestsSlice = createSlice({
     },
 })
 
-export const { setItems, updateItem, deleteItem } = requestsSlice.actions
+export const { setItems, addItem, updateItem, deleteItem } = requestsSlice.actions
 export default requestsSlice.reducer
