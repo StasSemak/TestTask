@@ -1,36 +1,26 @@
-import { ChangeEvent, FormEvent, useState } from "react"
+import { useState } from "react"
 import Button from "../ui/Button"
 import { toast } from "react-hot-toast"
-import { useNavigate } from "react-router-dom"
 import { createRequest } from "../../lib/requests"
+import { useForm } from "react-hook-form"
 
 const CreateOrder = () => {
-    const [request, setRequest] = useState<ParcelRequest>({
-        id: '',
-        requestType: 'order',
-        from: '', 
-        to: '', 
-        parcelType: '',
-        dateCreated: new Date(0),
-        dateDispatch: new Date(0),
-        description: ''
+    const { register, handleSubmit, reset } = useForm<ParcelRequest>({
+        defaultValues: {
+            requestType: 'order',
+            dateCreated: new Date(0),
+            dateDispatch: new Date(0)
+        }
     })
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
-    const navigate = useNavigate();
-
-    const changeHandler = (e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>) => {
-        setRequest({...request, [e.target.name]: e.target.value})
-    }
-
-    const submithandler = (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
+    const onSubmit = (data: ParcelRequest) => {
         setIsLoading(true)
 
         try {
-            createRequest(request);
+            createRequest(data);
             toast.success("Order successfully added!")
-            navigate(0)
+            reset()
         }
         catch(error) {
             if(error instanceof Error) toast.error(error.message)
@@ -43,14 +33,13 @@ const CreateOrder = () => {
     return(
         <div className="form">
             <h2>Create order</h2>
-            <form className="flex flex-col gap-3 mt-6 w-full" onSubmit={submithandler}>
+            <form className="flex flex-col gap-3 mt-6 w-full" onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-item">
                     <label>Parcel location (required)</label>
                     <input 
                         placeholder="City where parcel is" 
                         className="input"
-                        name="from"
-                        onChange={changeHandler}
+                        {...register("from")}
                     />
                 </div>
                 <div className="form-item">
@@ -58,8 +47,7 @@ const CreateOrder = () => {
                     <input 
                         placeholder="City where you need your parcel to be" 
                         className="input"
-                        name="to"
-                        onChange={changeHandler}
+                        {...register("to")}
                     />
                 </div>
                 <div className="form-item">
@@ -67,8 +55,7 @@ const CreateOrder = () => {
                     <input 
                         placeholder="What's inside the package" 
                         className="input"
-                        name="parcelType"
-                        onChange={changeHandler}
+                        {...register("parcelType")}
                     />
                 </div>
                 <div className="form-item">
@@ -77,16 +64,14 @@ const CreateOrder = () => {
                         placeholder="Date of dispatch" 
                         className="input"
                         type="date"
-                        name="dateDispatch"
-                        onChange={changeHandler}
+                        {...register("dateDispatch")}
                     />
                 </div>
                 <div className="form-item">
                     <label>Description</label>
                     <textarea
                         placeholder="Parcel details"  
-                        name="description"
-                        onChange={changeHandler}
+                        {...register("description")}
                     />
                 </div>
                 <Button 
