@@ -7,6 +7,7 @@ import CreateOrder from "./components/create/CreateOrder"
 import CreateDeliver from "./components/create/CreateDeliver"
 import CreateLayout from "./components/create/CreateLayout"
 import { Toaster } from "react-hot-toast"
+import NotFound from "./components/layout/NotFound"
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route path="deliver" element={<CreateDeliver/>}/>
           </Route>
           <Route path="requests" element={<Requests/>}/>
+          <Route path="*" element={<NotFound/>}/>
         </Route>
       </Routes>
       <Toaster position="top-right" containerStyle={{top: 90}}/>
